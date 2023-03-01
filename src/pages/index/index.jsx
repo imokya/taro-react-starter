@@ -1,10 +1,23 @@
 
-import { View, Text } from '@tarojs/components'
+import { useState } from 'react'
+import { View, Text, Button } from '@tarojs/components'
 import './index.scss'
 
 const Index = () => {
+  const [count, setCount] = useState(0)
+
+  const onIncrement = () => {
+    setCount(count+1)
+  }
+  const onDecrement = () => {
+    setCount(count-1)
+  }
   return (
-    <View><Text>Hello world</Text></View>
+    <View>
+      <View><Text>{count}</Text></View>
+      <Button onClick={onIncrement}>Increment</Button>
+      <Button onClick={onDecrement}>Decrement</Button>
+    </View>
   )
 }
 
