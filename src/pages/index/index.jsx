@@ -1,16 +1,17 @@
 
 import { useState } from 'react'
+import { connect } from 'react-redux'
 import { View, Text, Button } from '@tarojs/components'
+
+
 import './index.scss'
 
-const Index = () => {
-  const [count, setCount] = useState(0)
-
+const Index = ({count, dispatch}) => { 
   const onIncrement = () => {
-    setCount(count+1)
+    dispatch({type: 'counter/increment'})
   }
   const onDecrement = () => {
-    setCount(count-1)
+    dispatch({type: 'counter/decrement'})
   }
   return (
     <View>
@@ -21,4 +22,8 @@ const Index = () => {
   )
 }
 
-export default Index
+const mapStateToProps = (state) => {
+  return state.counter
+}
+
+export default connect(mapStateToProps)(Index)
