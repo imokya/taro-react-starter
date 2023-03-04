@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { View, Text, Button } from '@tarojs/components'
 
 import './index.scss'
 
-const Index = ({ count, dispatch }) => {
+const Index = () => {
+  const count = useSelector((state) => state.counter.count)
+  const dispatch = useDispatch()
   const onIncrement = () => {
     dispatch({ type: 'counter/increment' })
   }
@@ -22,8 +23,4 @@ const Index = ({ count, dispatch }) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return state.counter
-}
-
-export default connect(mapStateToProps)(Index)
+export default Index
